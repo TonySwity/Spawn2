@@ -40,3 +40,7 @@ UnityEngine.TestRunner.csproj
 UnityEngine.UI.csproj
 /UserSettings/
 /obj/
+.DS_Store
+Assets/.DS_Store
+/Spawn2/
+/Temp/
