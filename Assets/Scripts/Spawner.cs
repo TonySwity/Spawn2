@@ -4,14 +4,14 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject _template;
     [SerializeField] private Transform[] _spawnPoints;
-    [SerializeField] private float _startTimeSpawns = 2f;
+    [SerializeField] private float _spawnDelay = 2f;
 
-    private float _timeSpawns;
+    private float _timeAfterSpawn;
     private int _spawnPoint = 0;
 
     private void Start()
     {
-        _timeSpawns = _startTimeSpawns;
+        _timeAfterSpawn = _spawnDelay;
     }
 
     private void Update()
@@ -21,7 +21,7 @@ public class Spawner : MonoBehaviour
 
     private void SpawnEnemys()
     {
-        if (_timeSpawns <= 0)
+        if (_timeAfterSpawn <= 0)
         {
             if (_spawnPoint >= _spawnPoints.Length)
             {
@@ -30,12 +30,12 @@ public class Spawner : MonoBehaviour
 
             Instantiate(_template, _spawnPoints[_spawnPoint].transform.position, Quaternion.identity);
             _spawnPoint++;
-            _timeSpawns = _startTimeSpawns;
+            _timeAfterSpawn = _spawnDelay;
 
         }
         else
         {
-            _timeSpawns -= Time.deltaTime;
+            _timeAfterSpawn -= Time.deltaTime;
         }
     }
 }
