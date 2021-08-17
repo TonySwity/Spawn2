@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float _spawnDelay = 2f;
 
     private float _timeAfterSpawn;
-    private int _spawnPoint = 0;
+    private int _numberSpawnPoint = 0;
 
     private void Start()
     {
@@ -16,20 +16,20 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
-        SpawnEnemys();
+        SpawnEnemies();
     }
 
-    private void SpawnEnemys()
+    private void SpawnEnemies()
     {
         if (_timeAfterSpawn <= 0)
         {
-            if (_spawnPoint >= _spawnPoints.Length)
+            if (_numberSpawnPoint >= _spawnPoints.Length)
             {
-                _spawnPoint = 0;
+                _numberSpawnPoint = 0;
             }
 
-            Instantiate(_template, _spawnPoints[_spawnPoint].transform.position, Quaternion.identity);
-            _spawnPoint++;
+            Instantiate(_template, _spawnPoints[_numberSpawnPoint].transform.position, Quaternion.identity);
+            _numberSpawnPoint++;
             _timeAfterSpawn = _spawnDelay;
 
         }
